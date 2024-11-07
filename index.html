@@ -3,20 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: right;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .showcase {
+            min-height: 400px;
+            background: url('showcase.jpg') no-repeat 0 -400px;
+            text-align: center;
+            color: #fff;
+        }
+        .showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        .showcase p {
+            font-size: 20px;
+        }
+        .button {
+            display: inline-block;
+            color: #333;
+            background: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Flask Website</h1>
-    <p>This is a basic homepage template for a Flask web app.</p>
-    
-    <!-- Example Form -->
-    <form action="{{ url_for('submit') }}" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <header>
+        <div class="container">
+            <h1>My Landing Page</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="showcase">
+        <div class="container">
+            <h1>Welcome to Our Website</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec orci fermentum, a facilisis nulla gravida.</p>
+            <a href="#" class="button">Learn More</a>
+        </div>
+    </section>
 </body>
 </html>
