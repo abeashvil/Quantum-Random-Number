@@ -1,3 +1,4 @@
 flask
 qiskit
 qiskit-ibm-runtime
+qiskit_aer
