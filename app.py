@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify
 import rand_generator
 
-
 app = Flask(__name__)
 
 # Route for the homepage
@@ -20,5 +19,5 @@ def generate_random_number():
 
 # Run the app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000)
+    app.run(debug=True)
 
