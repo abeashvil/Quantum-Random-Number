@@ -2,7 +2,20 @@ from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit_ibm_runtime import EstimatorV2 as Estimator
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
 from qiskit_aer import AerSimulator
+import os
+from dotenv import load_dotenv, dotenv_values
+ 
+from qiskit_ibm_runtime import QiskitRuntimeService
+load_dotenv()
 
+# Save an IBM Quantum account and set it as your default account.
+QiskitRuntimeService.save_account(
+    channel="ibm_quantum",
+    token=os.getenv('MY_KEY'),
+    set_as_default=True,
+    # Use `overwrite=True` if you're updating your token.
+    overwrite=True,
+)
  
 # Load saved credentials
 service = QiskitRuntimeService()
