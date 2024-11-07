@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Website</title>
+    <title>Quantum Random Number Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Function to fetch and display a random number
+        async function generateRandomNumber() {
+            const response = await fetch('/generate-random-number');
+            const data = await response.json();
+            const resultBubble = document.getElementById('resultBubble');
+            resultBubble.innerText = "• Random Number: " + data.number; // Adding bullet point style
+            resultBubble.style.display = 'block'; // Show the result bubble
+        }
+    </script>
 </head>
 <body>
-    <h1>Welcome to My Flask Website</h1>
-    <p>This is a basic homepage template for a Flask web app.</p>
-    
-    <!-- Example Form -->
-    <form action="{{ url_for('submit') }}" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <!-- Navbar -->
+    <header class="navbar">
+        <h1>Quantum Random Number Generator</h1>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <button onclick="generateRandomNumber()">Generate Random Number</button>
+        <!-- Result Bubble -->
+        <div id="resultBubble" class="result-bubble">• Click "Generate" to get a random number.</div>
+    </main>
+
+    <!-- Footer with Description and Images -->
+    <footer>
+        <p>This website was designed using HTML and CSS and implemented using Flask. The purpose of this website is to demostrate the 
+            property of qubits by using them to generate random numbers. The random numbers are any 16 bit number, since it was implemented using 16 qubits. 
+            The way it works is by creating a quantum circuit with 16 Qubits and 16 Classical bits which they map to. The qubits then have a Hadamard gate applied 
+            to all of them in order to put them in a superposition state. Then, I simply measure the qubits and store that value within the classical qubits.
+            This was strictly a educational project, and one to help develop my skills in Qiskit, Quantum Computing Concepts, and web development. The circuit can be seen below.
+            <div>
+                <img src="{{ url_for('static', filename='circuit.jpg') }}", class="rounded" />   
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
+
 

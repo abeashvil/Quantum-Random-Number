@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, jsonify
+import rand_generator
 
 app = Flask(__name__)
 
@@ -7,13 +8,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# Example route to handle form data (if you want to add a contact form)
-@app.route('/submit', methods=['POST'])
-def submit():
-    name = request.form.get('name')
-    message = request.form.get('message')
-    # Process the form data (e.g., store it, send email, etc.)
-    return redirect(url_for('home'))
+# Route for generating a random number (to be called by the popup)
+@app.route('/generate-random-number')
+def generate_random_number():
+    return jsonify(number=rand_generator.generate_rand())
 
 # Run the app
 if __name__ == '__main__':
